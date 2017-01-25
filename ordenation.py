@@ -141,23 +141,23 @@ def main():
 			break
 
 	if(sys.argv[1] == '1'):
-		print 'Selection Sort'
+		#print 'Selection Sort'
 		selectionSort(list)
 		printList(list)
 	elif(sys.argv[1] == '2'):
-		print 'Insertion Sort'
+		#print 'Insertion Sort'
 		insertionSort(list)
 		printList(list)
 	elif(sys.argv[1] == '3'):
-		print 'Merge Sort'
+		#print 'Merge Sort'
 		mergeSort(list)
 		printList(list)
 	elif(sys.argv[1] == '4'):
-		print 'QuickSort'
+		#print 'QuickSort'
 		quickSort(list, 0, len(list)-1)
 		printList(list)
 	elif(sys.argv[1] == '5'):
-		print 'HeapSort'
+		#print 'HeapSort'
 		heapSort(list)
 		printList(list)
 main()
