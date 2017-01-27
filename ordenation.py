@@ -15,17 +15,17 @@ def swap(a,b):
 
 
 #function to print the array
-def printList(list):
-	for i in range (0, len(list)):					
+def printList(list, listSize):
+	for i in range (0, listSize):					
 		print list[i]
 
 
 
-def selectionSort(list):
+def selectionSort(list, listSize):
 	
-	for i in range(0, len(list)):
+	for i in range(0, listSize):
 		min = i 									#store the minimum index value
-		for j in range(i, len(list)):				#for the right subarray
+		for j in range(i, listSize):				#for the right subarray
 			if(list[j] < list[min]):				#if the new valeu is smaller than old value, minimum value is the new index
 				min = j			
 		list[i],list[min] = list[min], list[i]  	#swap values,
@@ -34,9 +34,9 @@ def selectionSort(list):
 				
 
 
-def insertionSort(list):
+def insertionSort(list, listSize):
 	
-	for i in range(1, len(list)):					#just the subarray i to left is ordenate, the new values are ordenate one by one
+	for i in range(1, listSize):					#just the subarray i to left is ordenate, the new values are ordenate one by one
 		choose = list[i]							#salve the new value to be ordenate 
 		index = i 									#salve the new index to be ordenate
 		while index > 0 and choose < list[index-1]: #compare the new value with the left subarray, if the new value is smaller than the left
@@ -46,16 +46,16 @@ def insertionSort(list):
 	
 
 
-def mergeSort(list):
+def mergeSort(list,listSize):
 	
-	if len(list) > 1:
-		half = len(list)/2
+	if listSize > 1:
+		half = listSize/2
 
 		leftList = list[:half]
 		rightList = list[half:]
 
-		mergeSort(leftList)
-		mergeSort(rightList)
+		mergeSort(leftList, len(leftList))
+		mergeSort(rightList, len(rightList))
 
 		i = 0
 		j = 0
@@ -103,11 +103,11 @@ def qSort(list, start, end):
 	return i+1, start, end
 
 
-def heapSort(list):
-	for start in range((len(list)-1)/2, -1, -1):
-		createMaxHeap(list, start, len(list)-1)
+def heapSort(list,listSize):
+	for start in range((listSize-1)/2, -1, -1):
+		createMaxHeap(list, start, listSize-1)
 
-	for end in range(len(list)-1, 0, -1):
+	for end in range(listSize-1, 0, -1):
    		list[end], list[0] = list[0], list[end]
   		createMaxHeap(list, 0, end - 1)
   
@@ -140,26 +140,27 @@ def main():
 		except(EOFError):	
 			break
 
+	listSize = list[0]
 	list = list[1:]
 
 	if(sys.argv[1] == '1'):
 		#print 'Selection Sort'
-		selectionSort(list)
-		printList(list)
+		selectionSort(list, listSize)
+		printList(list,listSize)
 	elif(sys.argv[1] == '2'):
 		#print 'Insertion Sort'
-		insertionSort(list)
-		printList(list)
+		insertionSort(list, listSize)
+		printList(list,listSize)
 	elif(sys.argv[1] == '3'):
 		#print 'Merge Sort'
-		mergeSort(list)
-		printList(list)
+		mergeSort(list,listSize)
+		printList(list,listSize)
 	elif(sys.argv[1] == '4'):
 		#print 'QuickSort'
-		quickSort(list, 0, len(list)-1)
-		printList(list)
+		quickSort(list, 0, listSize-1)
+		printList(list,listSize)
 	elif(sys.argv[1] == '5'):
 		#print 'HeapSort'
-		heapSort(list)
-		printList(list)
+		heapSort(list,listSize)
+		printList(list,listSize)
 main()
