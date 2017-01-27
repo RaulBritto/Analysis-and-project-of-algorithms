@@ -140,6 +140,8 @@ def main():
 		except(EOFError):	
 			break
 
+	list = list[1:]
+
 	if(sys.argv[1] == '1'):
 		#print 'Selection Sort'
 		selectionSort(list)
